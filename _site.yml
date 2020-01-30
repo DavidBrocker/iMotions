@@ -1,0 +1,12 @@
+name: "iMotions Instructions"
+navbar:
+  title: "iMotions Instructions"
+  left:
+    - text: "About"
+      href: index.html
+    - text: "Creating an Experiment"
+      href: Experiment.html
+    - text: "Eyetracker"
+      href: Eyetracker.html
+    - text: "EEG"
+      href: EEG.html

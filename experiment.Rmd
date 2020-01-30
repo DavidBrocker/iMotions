@@ -1,0 +1,118 @@
+---
+title: "Creating an Experiment"
+---
+<br>
+
+## Adding a New Study (Ctrl+N)
+
+<br>
+
+- In iMotions click on the icon next to **Library** on the left hand of the screen. 
+- Enter the appropriate information into the specified fields. 
+  - Leave the resolution and Display metrics as they are defaulted. 
+  - Choose whether or not you want your stimuli to be randomized or follow the order that they are arranged in the navigator above (at this point the top of your screen should be blank).
+  - If you wish to use blocks, make sure you check off **Enable**. 
+   - Using blocks will allow you to add specific randomization as well as looping, conditions, etc. 
+  - A description is not necessary, but it can help. 
+
+All of the above customization occurs within the **Study Settings** tab. 
+
+Click **Next** to progress to the next tab, **Sensors**.
+
+- Depending on what data collection method you are looking for will change your selection. 
+  - If you are using Eyetracking make sure you check off the box.
+  - If you are using the EEG, make sure you select **Lab Streaming Layer**. 
+
+## Adding Stimuli (Ctrl+S)
+
+- At the top right of the screen you will see an icon, which when hovered over will allow you to add stimuli to your experiment. 
+
+You can use the following stimuli types:
+
+- **Image/Video**
+  - This option will most likely be the primary stimuli used in experiments. Most file formats are accepted. 
+- **Web Site**
+  - This option is useful if you wanted to see where participants look at certain websites. Advertisements, banners, pictures, etc. 
+- **Screen Recording**
+  - This option is useful if your experiment is not based on a survey or cannot be created with iMotions built-in tools.
+    - e.g. Superlab/MATLAB/PsychoPy Experiments
+- **Face Recording**
+  - This option is useful if you are interested in viewing facial data without any other stimuli displayed. 
+    - Post processing look at facial expressions, clues to explain odd data. 
+- **Scene Recording**
+  - This option is useful if you are using a USB camera to record interaction or data with something outside of your primary screen.
+- **Survey Slide**
+  - This option is useful to create instructions, fixation crosses, and complete surveys.
+- **Qualtrics Survey**
+  - This option is useful to incorporate a pre-existing qualtircs survey with the ability to collect biometric data. 
+  
+For the purpose of this walkthrough, we will be using **Images/Video** and **Survey Slide**.  
+
+### Add an Instructions Survey Slide
+
+- All experiments should have an instructions slide. The purpose is to tell participants what they will be seeing in the experiment, as well as to create a buffer time before you start collecting the data. 
+  - Having a participant read a slide before collecting data might help in reducing any anxiety or stress experienced from being in an unfamiliar place. 
+- Click the *Add Stimulus to Study* button, or hit *Ctrl+S*.
+- Select **Survey Slide**
+- Double click *Rich Text** on the navigation menu to the left.
+  - Enter your instruction text.
+    - e.g "In the following experiment, you will be shown several images. Before each image you will see a cross, please do your best to focus on the cross. When you are ready to begin, press SPACE."
+- Click **Save to Study** at the bottom of the right of the screen. 
+- Add another **Survey Slide** to your study. 
+- This stimulus will act as a way for participants to type in what they saw and in what order they saw them. 
+  - From the menu, select **Text Response** from the left navigation window.
+  - Add a **Rich Text** object as well to tell your participants what they will be doing.
+
+### Add images to the study
+- Select **Images/Video**. 
+- Import the images or videos you will be working with. 
+  - For our example, we will be using images of emotional scenes which can be downloaded [here](www.google.com).
+- You can preview your image as well as create a pre-defined **Areas of Interest(AOI)** which will be discussed later. 
+- Give your image(s) the appropriate name. 
+- Indicate the exposure time and description. 
+  - There is a lower limit to exposure that stops at 50ms. 
+- You can also decide whether or not you want the slides to be advanced upon an input or limited to time. 
+
+### Organizing Stimuli in Block Editor
+
+- Assuming that you have set your study settings to enable **Stimuli Blocks**, you will be able to access the **Stimuli Batch Editor**. 
+- Here you will see a preview of all of your stimuli, the name and exposure time. Additionally, you will see options for **Manual Advance**, **Position Fixed**, **Track Mouse** and **Record Webcam**. 
+- For our purposes we would like to make it so that the experiment always begins with instructions, followed by our four images that will be randomized. The experiment will always finish with a response from the participant.
+  - Select the **Add New Block** icon from the bottom bar.
+    - select each of your image stimuli and click on the right arrow to add them into the other window. 
+    - Label this block "Randomize" and Save and Exit. 
+  - Add another block
+  - Add your two survey slides into the right window and make sure to place the folder icon. "Randomize" in between them. 
+    - Make sure to check the box that says **Use Block as a runnable slideshow**. 
+    - Label this block "Main Block" and Save and Exit. 
+  - It is always a good idea to make sure your block is appearing how you would like it to.
+    - Select the third icon on the bottom row that says **View Block**
+      - In this window you should see your six items:
+      - Instructions>Image 1>Image 2> Image 3> Image 4>Response
+      - You should notice that **Block_1** stretches across the entire experiment and **Randomize** *only* stretches across the image stimuli.
+      - Press **Shuffle** a few times to make sure that the images are randomizing.
+      - Close the window to return to the editor and close that window as well.
+      
+
+### Adding a new User (Ctrl+D)
+- Select the icon on the right side of the screen next to where it says **Respondents**. 
+- Enter the appropriate informations in the dialog boxes.
+  - For testing purposes, you can put your own name in the box appended with "_test" so it can be deleted later on. 
+    - e.g "Dave_Test"
+  - Otherwise, this field should contain *only* the participants SONA ID.
+- Log the appropriate characteristics of Gender and Age. 
+- If you plan to group your data, you can add a field in the **Group** dialog box. 
+- Leave the calibration mode as **Regular**. 
+
+### Running the study
+
+- You are now ready to start collecting data for this study!
+- Make sure to select your **Respondent** before you select **Start Recording**. 
+  - If you are using blocks in your experiment as we are in this sample one, it is helpful to select **Auto select block to run** in the **Study Settings** tab. 
+- Make sure that you are using the correct sensors, and begin your study.
+
+
+
+
+
+

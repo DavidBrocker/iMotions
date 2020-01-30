@@ -1,0 +1,8 @@
+---
+title: "Hardware and Software Instructions"
+---
+
+
+## Hardware:
+  - [Eyetech VT3 Mini](https://imotions.com/hardware/eyetech-vt3-mini/)
+  ![](images/EyeTech-VT3-mini.png)
