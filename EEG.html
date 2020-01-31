@@ -22,6 +22,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -299,6 +300,7 @@ $(document).ready(function () {
 </div>
 
 
+<p><br></p>
 <div id="eeg-setup" class="section level1">
 <h1>EEG Setup</h1>
 <p>Setting up the workstation for the EEG is more involved than the eyetracker. Because of this, partiicpants must be scheduled with enough time apart to allow for setup and maintenance. This guide will go over several steps of the setup and procedure for using EEG in research.</p>
@@ -315,15 +317,232 @@ $(document).ready(function () {
 <h2>Setting up the Cap</h2>
 <p>The neoprene cap should always be clear of any debris from past participants. The cap should also be stationed on the styrofoam head while not in use.</p>
 <p>The cap is made of a flexible material and it should fit most heads.</p>
-<p>The cap should be set up with the electrode caps before the experiment begins.</p>
-<p>Make sure the electrode caps are in the following openings:</p>
+<div id="step-1-prepare-the-headcap-and-electrodes" class="section level3">
+<h3>Step 1: Prepare the headcap and electrodes</h3>
 <ul>
-<li>Fp1 | Fpz | Fp2|</li>
-<li>F7 | F3 | Fz | F4 | F8</li>
-<li>T7 | C3 | Cz | c4 | T8</li>
-<li>P3 | Pz | P4</li>
-<li>01 | O2 | O3</li>
+<li>Insert the bottom parts of the electrodes in the headcap holes.
+<ul>
+<li>Take note of the placements on the NIC2 screen.</li>
+</ul></li>
 </ul>
+</div>
+<div id="step-2-put-on-the-headcap" class="section level3">
+<h3>Step 2: Put on the headcap</h3>
+<ul>
+<li>Place the headcap on he participants head</li>
+<li>Fasten the headcap comfortably.
+<ul>
+<li>Make sure <strong>Cz</strong> is the midpoint from ear to ear.
+<ul>
+<li>Make sure the headcap is properly aligned.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="step-3-inject-gel-into-the-electrodes" class="section level3">
+<h3>Step 3: Inject gel into the electrodes</h3>
+<ul>
+<li>For each electrode, use the syringe to move hair away and expose the scalp.
+<ul>
+<li>Fill the syringe with gel and put enough gel in the electrode.
+<ul>
+<li>When you think you have put enough, put more!</li>
+</ul></li>
+</ul></li>
+<li>Make sure to screw together top and bottom parts of the electrode.</li>
+</ul>
+</div>
+<div id="step-4-connect-cables" class="section level3">
+<h3>Step 4: Connect cables</h3>
+<ul>
+<li>Clip the cables onto the electrodes
+<ul>
+<li>Make sure to match the electrode lavel with the right headcap position.</li>
+</ul></li>
+</ul>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Electrode Placement
+</th>
+<th style="text-align:right;">
+Channel
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+OZ (P7)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P4
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cz
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pz
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P3
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O2
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T8
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F8
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C4
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F4
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fp2
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fz
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C3
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F3
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fp1
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T7
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F7
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fpz (EXT)
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-5-connect-the-earclip" class="section level3">
+<h3>Step 5: Connect the earclip</h3>
+<ul>
+<li>Open the earclip by pressing the ends together</li>
+<li>Place a drop of gel between the connector pads.</li>
+<li>Connect the reference cables to the earclip.</li>
+<li>Secure the eaerclip onto the participants <strong>right earlobe</strong>.</li>
+</ul>
+</div>
+<div id="step-6-connect-the-device" class="section level3">
+<h3>Step 6: Connect the device</h3>
+<ul>
+<li>Attach the device to the large velcro patch on the back of the headcap.</li>
+<li>Connect the electrode cables to the device.</li>
+</ul>
+</div>
 </div>
 </div>
 
