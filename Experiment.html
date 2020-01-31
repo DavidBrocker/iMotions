@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Creating an Experiment</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">iMotions Instructions</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About</a>
+</li>
+<li>
+  <a href="Experiment.html">Creating an Experiment</a>
+</li>
+<li>
+  <a href="Eyetracker.html">Eyetracker</a>
+</li>
+<li>
+  <a href="EEG.html">EEG</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Creating an Experiment</h1>
+
+</div>
+
+
+<p><br></p>
+<div id="adding-a-new-study-ctrln" class="section level2">
+<h2>Adding a New Study (Ctrl+N)</h2>
+<p><br></p>
+<ul>
+<li>In iMotions click on the icon next to <strong>Library</strong> on the left hand of the screen.</li>
+<li>Enter the appropriate information into the specified fields.
+<ul>
+<li>Leave the resolution and Display metrics as they are defaulted.</li>
+<li>Choose whether or not you want your stimuli to be randomized or follow the order that they are arranged in the navigator above (at this point the top of your screen should be blank).</li>
+<li>If you wish to use blocks, make sure you check off <strong>Enable</strong>.</li>
+<li>Using blocks will allow you to add specific randomization as well as looping, conditions, etc.</li>
+<li>A description is not necessary, but it can help.</li>
+</ul></li>
+</ul>
+<p>All of the above customization occurs within the <strong>Study Settings</strong> tab.</p>
+<p>Click <strong>Next</strong> to progress to the next tab, <strong>Sensors</strong>.</p>
+<ul>
+<li>Depending on what data collection method you are looking for will change your selection.
+<ul>
+<li>If you are using Eyetracking make sure you check off the box.</li>
+<li>If you are using the EEG, make sure you select <strong>Lab Streaming Layer</strong>.</li>
+</ul></li>
+</ul>
+</div>
+<div id="adding-stimuli-ctrls" class="section level2">
+<h2>Adding Stimuli (Ctrl+S)</h2>
+<ul>
+<li>At the top right of the screen you will see an icon, which when hovered over will allow you to add stimuli to your experiment.</li>
+</ul>
+<p>You can use the following stimuli types:</p>
+<ul>
+<li><strong>Image/Video</strong>
+<ul>
+<li>This option will most likely be the primary stimuli used in experiments. Most file formats are accepted.</li>
+</ul></li>
+<li><strong>Web Site</strong>
+<ul>
+<li>This option is useful if you wanted to see where participants look at certain websites. Advertisements, banners, pictures, etc.</li>
+</ul></li>
+<li><strong>Screen Recording</strong>
+<ul>
+<li>This option is useful if your experiment is not based on a survey or cannot be created with iMotions built-in tools.
+<ul>
+<li>e.g. Superlab/MATLAB/PsychoPy Experiments</li>
+</ul></li>
+</ul></li>
+<li><strong>Face Recording</strong>
+<ul>
+<li>This option is useful if you are interested in viewing facial data without any other stimuli displayed.
+<ul>
+<li>Post processing look at facial expressions, clues to explain odd data.</li>
+</ul></li>
+</ul></li>
+<li><strong>Scene Recording</strong>
+<ul>
+<li>This option is useful if you are using a USB camera to record interaction or data with something outside of your primary screen.</li>
+</ul></li>
+<li><strong>Survey Slide</strong>
+<ul>
+<li>This option is useful to create instructions, fixation crosses, and complete surveys.</li>
+</ul></li>
+<li><strong>Qualtrics Survey</strong>
+<ul>
+<li>This option is useful to incorporate a pre-existing qualtircs survey with the ability to collect biometric data.</li>
+</ul></li>
+</ul>
+<p>For the purpose of this walkthrough, we will be using <strong>Images/Video</strong> and <strong>Survey Slide</strong>.</p>
+<div id="add-an-instructions-survey-slide" class="section level3">
+<h3>Add an Instructions Survey Slide</h3>
+<ul>
+<li>All experiments should have an instructions slide. The purpose is to tell participants what they will be seeing in the experiment, as well as to create a buffer time before you start collecting the data.
+<ul>
+<li>Having a participant read a slide before collecting data might help in reducing any anxiety or stress experienced from being in an unfamiliar place.</li>
+</ul></li>
+<li>Click the <em>Add Stimulus to Study</em> button, or hit <em>Ctrl+S</em>.</li>
+<li>Select <strong>Survey Slide</strong></li>
+<li>Double click *Rich Text** on the navigation menu to the left.
+<ul>
+<li>Enter your instruction text.
+<ul>
+<li>e.g “In the following experiment, you will be shown several images. Before each image you will see a cross, please do your best to focus on the cross. When you are ready to begin, press SPACE.”</li>
+</ul></li>
+</ul></li>
+<li>Click <strong>Save to Study</strong> at the bottom of the right of the screen.</li>
+<li>Add another <strong>Survey Slide</strong> to your study.</li>
+<li>This stimulus will act as a way for participants to type in what they saw and in what order they saw them.
+<ul>
+<li>From the menu, select <strong>Text Response</strong> from the left navigation window.</li>
+<li>Add a <strong>Rich Text</strong> object as well to tell your participants what they will be doing.</li>
+</ul></li>
+</ul>
+</div>
+<div id="add-images-to-the-study" class="section level3">
+<h3>Add images to the study</h3>
+<ul>
+<li>Select <strong>Images/Video</strong>.</li>
+<li>Import the images or videos you will be working with.
+<ul>
+<li>For our example, we will be using images of emotional scenes which can be downloaded <a href="www.google.com">here</a>.</li>
+</ul></li>
+<li>You can preview your image as well as create a pre-defined <strong>Areas of Interest(AOI)</strong> which will be discussed later.</li>
+<li>Give your image(s) the appropriate name.</li>
+<li>Indicate the exposure time and description.
+<ul>
+<li>There is a lower limit to exposure that stops at 50ms.</li>
+</ul></li>
+<li>You can also decide whether or not you want the slides to be advanced upon an input or limited to time.</li>
+</ul>
+</div>
+<div id="organizing-stimuli-in-block-editor" class="section level3">
+<h3>Organizing Stimuli in Block Editor</h3>
+<ul>
+<li>Assuming that you have set your study settings to enable <strong>Stimuli Blocks</strong>, you will be able to access the <strong>Stimuli Batch Editor</strong>.</li>
+<li>Here you will see a preview of all of your stimuli, the name and exposure time. Additionally, you will see options for <strong>Manual Advance</strong>, <strong>Position Fixed</strong>, <strong>Track Mouse</strong> and <strong>Record Webcam</strong>.</li>
+<li>For our purposes we would like to make it so that the experiment always begins with instructions, followed by our four images that will be randomized. The experiment will always finish with a response from the participant.
+<ul>
+<li>Select the <strong>Add New Block</strong> icon from the bottom bar.
+<ul>
+<li>select each of your image stimuli and click on the right arrow to add them into the other window.</li>
+<li>Label this block “Randomize” and Save and Exit.</li>
+</ul></li>
+<li>Add another block</li>
+<li>Add your two survey slides into the right window and make sure to place the folder icon. “Randomize” in between them.
+<ul>
+<li>Make sure to check the box that says <strong>Use Block as a runnable slideshow</strong>.</li>
+<li>Label this block “Main Block” and Save and Exit.</li>
+</ul></li>
+<li>It is always a good idea to make sure your block is appearing how you would like it to.
+<ul>
+<li>Select the third icon on the bottom row that says <strong>View Block</strong>
+<ul>
+<li>In this window you should see your six items:</li>
+<li>Instructions&gt;Image 1&gt;Image 2&gt; Image 3&gt; Image 4&gt;Response</li>
+<li>You should notice that <strong>Block_1</strong> stretches across the entire experiment and <strong>Randomize</strong> <em>only</em> stretches across the image stimuli.</li>
+<li>Press <strong>Shuffle</strong> a few times to make sure that the images are randomizing.</li>
+<li>Close the window to return to the editor and close that window as well.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="adding-a-new-user-ctrld" class="section level3">
+<h3>Adding a new User (Ctrl+D)</h3>
+<ul>
+<li>Select the icon on the right side of the screen next to where it says <strong>Respondents</strong>.</li>
+<li>Enter the appropriate informations in the dialog boxes.
+<ul>
+<li>For testing purposes, you can put your own name in the box appended with "_test" so it can be deleted later on.
+<ul>
+<li>e.g “Dave_Test”</li>
+</ul></li>
+<li>Otherwise, this field should contain <em>only</em> the participants SONA ID.</li>
+</ul></li>
+<li>Log the appropriate characteristics of Gender and Age.</li>
+<li>If you plan to group your data, you can add a field in the <strong>Group</strong> dialog box.</li>
+<li>Leave the calibration mode as <strong>Regular</strong>.</li>
+</ul>
+</div>
+<div id="running-the-study" class="section level3">
+<h3>Running the study</h3>
+<ul>
+<li>You are now ready to start collecting data for this study!</li>
+<li>Make sure to select your <strong>Respondent</strong> before you select <strong>Start Recording</strong>.
+<ul>
+<li>If you are using blocks in your experiment as we are in this sample one, it is helpful to select <strong>Auto select block to run</strong> in the <strong>Study Settings</strong> tab.</li>
+</ul></li>
+<li>Make sure that you are using the correct sensors, and begin your study.</li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
